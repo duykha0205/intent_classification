@@ -1,0 +1,20 @@
+def inference_inputs(parser):
+    parser.add_argument(
+        "input",
+        type=str, required=False,
+        help="Input to inference"
+    )
+
+    parser.add_argument(
+        "language",
+        type=str, required=True,
+        help="vi/en"
+    )
+
+    # parser.add_argument(
+    #     "output_type",
+    #     type=str, required=False,
+    #     help="label/probability",
+    #     default="probability"
+    # )
+    return parser
