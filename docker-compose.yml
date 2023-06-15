@@ -1,0 +1,34 @@
+version: "3.7"
+
+services:
+  service_requirments:
+    build:
+      context: .
+      dockerfile: Dockerfile.requirements
+    image: service_requirements
+  classify_service:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: classify_service
+#    hostname: classify_service
+#    container_name: classify_service
+    ports:
+      - 5001:5000
+    environment:
+      DEVICE: cpu
+      MODEL_DIR: parameters
+      MXNET_ENGINE_TYPE: NaiveEngine
+      BERT_MODEL: bert_12_768_12
+      BERT_DATASET_NAME: book_corpus_wiki_en_uncased
+      BERT_PRETRAIN_NAME: bert-v3.params
+      BERT_CASED: "false"
+      FASTTEXT_MODEL: fasttext-v3.bin
+      DISTILBERT_MODEL: distbert-v3
+      DISTILBERT_TOKENIZER: distilbert-base-uncased
+      ENSEMBLE_MODEL: ensemble_mlp-v3.pkl
+      FASTTEXT_VI_MODEL: fasttext-vi.bin
+      PHOBERT_MODEL: phobert
+      PHOBERT_TOKENIZER: vinai/phobert-base
+      ENSEMBLE_VI_MODEL: ensemble_mlp-vi.pkl
+      ENV HF_HOME: "/root/cache/hf_cache_home"

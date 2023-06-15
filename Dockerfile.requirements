@@ -1,0 +1,9 @@
+FROM python:3.8
+
+COPY requirements.txt /tmp
+
+#RUN apt-get update && apt-get install apt-utils && apt-get install vim libgpm2 vim-common vim-runtime xxd
+
+RUN python -m pip install --upgrade pip
+RUN pip install --no-cache-dir -r /tmp/requirements.txt
+RUN python -m spacy download en_core_web_sm
