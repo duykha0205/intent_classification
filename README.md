@@ -1,1 +1,1 @@
-# nlp_core
+# nlp intent classification
